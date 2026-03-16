@@ -18,6 +18,7 @@ export const validationRules: { [key: string]: (value: any) => boolean } = {
   repeat_last_n: (value: any) => typeof value === 'number',
   repeat_penalty: (value: any) => typeof value === 'number',
   min_p: (value: any) => typeof value === 'number',
+  top_n_sigma: (value: any) => typeof value === 'number',
 
   ctx_len: (value: any) => Number.isInteger(value) && value >= 0,
   ngl: (value: any) => Number.isInteger(value) && value >= 0,
@@ -55,6 +56,7 @@ export const normalizeValue = (key: string, value: any) => {
     key === 'top_k' ||
     key === 'top_p' ||
     key === 'min_p' ||
+    key === 'top_n_sigma' ||
     key === 'repeat_penalty' ||
     key === 'frequency_penalty' ||
     key === 'presence_penalty' ||
@@ -84,6 +86,7 @@ export const extractInferenceParams = (
     token_limit: undefined,
     top_k: undefined,
     top_p: undefined,
+    top_n_sigma: undefined,
     stream: undefined,
     max_tokens: undefined,
     stop: undefined,
@@ -148,6 +151,7 @@ export const extractModelLoadParams = (
     top_p: undefined,
     top_k: undefined,
     min_p: undefined,
+    top_n_sigma: undefined,
     temperature: undefined,
     repeat_penalty: undefined,
     repeat_last_n: undefined,

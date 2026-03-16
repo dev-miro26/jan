@@ -124,6 +124,7 @@ export type ModelSettingParams = {
   top_p?: number
   top_k?: number
   min_p?: number
+  top_n_sigma?: number
   temperature?: number
   repeat_penalty?: number
   repeat_last_n?: number
@@ -140,6 +141,7 @@ export type ModelRuntimeParams = {
   token_limit?: number
   top_k?: number
   top_p?: number
+  top_n_sigma?: number
   stream?: boolean
   max_tokens?: number
   stop?: string[]

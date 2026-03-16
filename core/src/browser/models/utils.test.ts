@@ -180,6 +180,14 @@ describe('validationRules', () => {
     expect(validationRules.min_p('0.1')).toBe(false)
     expect(validationRules.min_p(null)).toBe(false)
   })
+
+  it('should validate top_n_sigma correctly', () => {
+    expect(validationRules.top_n_sigma(2.0)).toBe(true)
+    expect(validationRules.top_n_sigma(0)).toBe(true)
+    expect(validationRules.top_n_sigma(-1)).toBe(true)
+    expect(validationRules.top_n_sigma('2.0')).toBe(false)
+    expect(validationRules.top_n_sigma(null)).toBe(false)
+  })
 })
 
 it('should normalize invalid values for keys not listed in validationRules', () => {

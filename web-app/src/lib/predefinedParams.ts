@@ -30,6 +30,12 @@ export const paramsSettings = {
     description: `Set probability threshold for more relevant outputs. Higher values allow more diverse word choices.`,
     controllerType: 'slider',
   },
+  top_n_sigma: {
+    key: 'top_n_sigma',
+    value: -1,
+    title: 'Top N Sigma',
+    description: `Top N Sigma sampling (-1 = disabled). Only tokens within N standard deviations of the top logit are kept.`,
+  },
   top_k: {
     key: 'top_k',
     value: 2,

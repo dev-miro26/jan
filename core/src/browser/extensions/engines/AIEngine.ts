@@ -65,6 +65,7 @@ export interface chatCompletionRequest {
   top_k?: number | null
   top_p?: number | null
   min_p?: number | null
+  top_n_sigma?: number | null
   typical_p?: number | null
   repeat_penalty?: number | null
   repeat_last_n?: number | null

@@ -82,6 +82,18 @@ export const modelSettings = {
       type: 'number',
     },
   },
+  top_n_sigma: {
+    key: 'top_n_sigma',
+    title: 'Top N Sigma',
+    description:
+      'Top N Sigma sampling (-1 = disabled). Only tokens within N standard deviations of the top logit are kept. This is the default setting on load and can be overridden by the assistant settings.',
+    controller_type: 'input',
+    controller_props: {
+      value: '',
+      placeholder: '-1',
+      type: 'number',
+    },
+  },
   repeat_last_n: {
     key: 'repeat_last_n',
     title: 'Repeat Last N',
