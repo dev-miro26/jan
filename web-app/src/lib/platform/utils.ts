@@ -5,22 +5,13 @@ declare const IS_IOS: boolean
 declare const IS_ANDROID: boolean
 
 export const isPlatformTauri = (): boolean => {
-  if (typeof IS_WEB_APP === 'undefined') {
-    return true
-  }
-  if (IS_WEB_APP === true || (IS_WEB_APP as unknown as string) === 'true') {
-    return false
-  }
-  return true
+  if (typeof IS_WEB_APP === 'undefined') return true
+  return !(IS_WEB_APP === true || (IS_WEB_APP as unknown as string) === 'true')
 }
 
-export const isPlatformIOS = (): boolean => {
-  return IS_IOS
-}
+export const isPlatformIOS = (): boolean => IS_IOS
 
-export const isPlatformAndroid = (): boolean => {
-  return IS_ANDROID
-}
+export const isPlatformAndroid = (): boolean => IS_ANDROID
 
 export const isIOS = (): boolean => isPlatformIOS()
 

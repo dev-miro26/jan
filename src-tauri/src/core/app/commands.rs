@@ -165,23 +165,19 @@ pub fn get_app_configurations<R: Runtime>(app_handle: tauri::AppHandle<R>) -> Ap
         return app_default_configuration;
     }
 
-    match fs::read_to_string(&configuration_file) {
-        Ok(content) => {
-            match serde_json::from_str::<AppConfiguration>(&content) {
-                Ok(app_configurations) => app_configurations,
-                Err(err) => {
-                    log::error!("Failed to parse app config, returning default config instead. Error: {err}");
-                    // Use the proper default data folder path, not the relative "./data"
-                    app_default_configuration.data_folder = default_data_folder;
-                    app_default_configuration
-                }
-            }
-        }
+    let content = match fs::read_to_string(&configuration_file) {
+        Ok(content) => content,
         Err(err) => {
-            log::error!(
-                "Failed to read app config, returning default config instead. Error: {err}"
-            );
-            // Use the proper default data folder path, not the relative "./data"
+            log::error!("Failed to read app config, returning default config instead. Error: {err}");
+            app_default_configuration.data_folder = default_data_folder;
+            return app_default_configuration;
+        }
+    };
+
+    match serde_json::from_str::<AppConfiguration>(&content) {
+        Ok(app_configurations) => app_configurations,
+        Err(err) => {
+            log::error!("Failed to parse app config, returning default config instead. Error: {err}");
             app_default_configuration.data_folder = default_data_folder;
             app_default_configuration
         }
